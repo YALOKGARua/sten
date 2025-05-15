@@ -1,0 +1,20 @@
+CC = gcc
+CFLAGS = -Wall -std=c99
+
+BIN_DIR = bin
+SRC_DIR = src
+
+CONSOLE_EXEC = $(BIN_DIR)/stego_console.exe
+
+.PHONY: all clean
+
+all: $(CONSOLE_EXEC)
+
+$(CONSOLE_EXEC): $(SRC_DIR)/stego_console.c | $(BIN_DIR)
+	$(CC) $(CFLAGS) -o $@ $<
+
+$(BIN_DIR):
+	mkdir -p $(BIN_DIR)
+
+clean:
+	rm -f $(CONSOLE_EXEC) 
